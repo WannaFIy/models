@@ -948,9 +948,9 @@ class RandAugment(ImageAugment):
     """
     input_image_type = image.dtype
 
-    if input_image_type != tf.uint8:
+    if input_image_type != tf.int32:
       image = tf.clip_by_value(image, 0.0, 255.0)
-      image = tf.cast(image, dtype=tf.uint8)
+      image = tf.cast(image, dtype=tf.int32)
 
     replace_value = [128] * 3
     min_prob, max_prob = 0.2, 0.8
